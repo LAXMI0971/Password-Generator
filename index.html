@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramdom Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <div class="container">
+    <h1> Generate a <br/> <span>Random Password </span></h1> <!-- span tag is used for apply the css on a particular tags or text-->
+    <div class="display">
+        <input type="text" id="password" placeholder="Password"/>
+        <i class="fa-regular fa-copy" onclick="copyPassword()"></i>
+        
+    </div>
+    <button onclick="createPassword()"> 
+        <img src="generate.png">
+        Generate Password</button>
+   </div>
+    <script>
+        const passwordBox=document.getElementById("password");
+        const lenght=12;
+
+        const upperCase="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowerCase="abcdefghijklmnopqrstuvwxyz";
+        const number="0123456789";
+        const symbol="@#$%^&*()_+~|}{[]></-=";
+
+          const allChars=upperCase+lowerCase+number+symbol;
+
+        function createPassword(){
+
+            let password="";
+            password+=upperCase[Math.floor(Math.random() * upperCase.length)];
+            password+=lowerCase[Math.floor(Math.random() * lowerCase.length)];
+            password+=number[Math.floor(Math.random() * number.length)];
+            password+=symbol[Math.floor(Math.random() * symbol.length)];
+
+
+            while(length>password.length){
+                password+=allChara[Math.floor(Math.random() * symbol.length)];
+            }
+            passwordBox.value=password;
+        }
+
+        function copyPassword(){
+            passwordBox.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>
